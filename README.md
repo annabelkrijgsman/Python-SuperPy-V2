@@ -75,15 +75,15 @@ Same as total revenue, but asks for two dates, earliest first and latest second,
 
 - ### `show-total-profit`
 
-.........
+Calculates and shows the total profit from the data in bought.csv and sales.csv
 
-`python main.py show-total-revenue`
+`python main.py show-total-profit`
 
 - ### `show-date-profit`
 
 Same as total profit, but asks for two dates, earliest first and latest second, in 'YYYY-MM-DD' format and returns the total profit between the given dates
 
-`python main.py show-date-revenue --firstdate 2022-01-01 --seconddate 2022-03-03`
+`python main.py show-date-profit --firstdate 2022-01-01 --seconddate 2022-03-03`
 
 - ### `show-inventory`
 
