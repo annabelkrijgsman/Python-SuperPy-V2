@@ -16,6 +16,4 @@ def sell_product(product_name, quantity, price):
             id = get_new_id(path) + i
             product = [id, bought_id, today, price]
             csv_writer.writerow(product)
-    print(
-        f"You have sold {quantity}x {product_name}, for {price} eur, on {today}"
-    )
+    print(f"You have sold {quantity}x {product_name}, for {price} eur, on {today}")
