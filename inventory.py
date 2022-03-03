@@ -25,7 +25,6 @@ def get_sold_ids():
             sold_ids.append(row["bought_id"])
     return sold_ids
 
-
 def get_sold_items():
     sold_items = []
     with open(sold_path, "r", encoding="utf-8-sig") as sold_object:
@@ -105,26 +104,6 @@ def display_inventory():
         )
     console.print(table)
 
-def export_inventory(export_value):
-    inventory = get_inventory()
-    path = "./data/export.csv"
-    file_exists = os.path.isfile(path)
-    if export_value == "Yes":
-        if file_exists:
-            print(f"This file already exists")
-            display_inventory()
-        else:
-            with open(path, "w", newline ="") as file:
-                csv_writer = csv.writer(file)
-                for product, quantity in inventory.items():
-                    products = [product, quantity]
-                    csv_writer.writerow(products)
-            print(f"File created")
-            display_inventory()
-    else:
-        display_inventory()
-
-
 def display_sales():
     sales = get_sold_items()
     purchases = get_bought_items()
@@ -144,7 +123,6 @@ def display_sales():
         )
     console.print(table)
 
-
 def display_purchases():
     purchases = get_bought_items()
     table = Table(show_header=True, header_style="bold green")
@@ -160,3 +138,22 @@ def display_purchases():
             item['expiration_date']
         )
     console.print(table)
+
+def export_inventory(export_value):
+    inventory = get_inventory()
+    path = "./data/export_inventory.csv"
+    file_exists = os.path.isfile(path)
+    if export_value == "Yes":
+        if file_exists:
+            print(f"This file already exists")
+            display_inventory()
+        else:
+            with open(path, "w", newline ="") as file:
+                csv_writer = csv.writer(file)
+                for product, quantity in inventory.items():
+                    products = [product, quantity]
+                    csv_writer.writerow(products)
+            print(f"File created")
+            display_inventory()
+    else:
+        display_inventory()
