@@ -4,7 +4,8 @@ from date import advance_time, print_date, set_current_date
 from purchases import purchase_product
 from sales import sell_product
 from inventory import display_inventory, display_sales, display_purchases
-import revenue
+from revenue import print_total_revenue
+from profit import print_total_profit
 from rich.console import Console
 from rich import print
 
@@ -50,8 +51,8 @@ date_revenue.add_argument("--seconddate", type= str)
 # Set defaults
 show_date.set_defaults(func=print_date)
 set_today.set_defaults(func=set_current_date)
-total_revenue.set_defaults(func=revenue.print_total_revenue)
-# total_profit.set_defaults()                                     # Make functionalities
+total_revenue.set_defaults(func=print_total_revenue)
+total_profit.set_defaults(func=print_total_profit)
 inventory.set_defaults(func=display_inventory)
 sales.set_defaults(func=display_sales)
 purchases.set_defaults(func=display_purchases)
