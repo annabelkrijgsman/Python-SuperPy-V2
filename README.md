@@ -87,9 +87,13 @@ Same as total profit, but asks for two dates, earliest first and latest second, 
 
 - ### `show-inventory`
 
-Checks which items are currently available and uses Rich to report the numbers
+Checks which items are currently available and uses Rich to report the numbers. Also gives you the option to export the data.
 
+To see the inventory _without_ an export, use the following command:
 `python main.py show-inventory`
+
+To see the inventory _and_ receive an export, use the following command:
+`python main.py show-inventory --export Yes`
 
 - ### `show-sales`
 
