@@ -8,13 +8,6 @@ def get_total_revenue():
         total += float(item["sell_price"])
     return total
 
-# Write functions down below for calculating profit
-# def get_total_purchase():
-#     return 10
-
-# def get_total_profit():
-#     return get_total_revenue - get_total_purchase
-
 def print_total_revenue():
     total_revenue = get_total_revenue()
     print(f"The total revenue is: {total_revenue} eur")
