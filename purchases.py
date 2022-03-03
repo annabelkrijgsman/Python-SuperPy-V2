@@ -25,6 +25,4 @@ def purchase_product(product_name, quantity, price, expiration_days):
             id = get_new_id(path) + i
             product = [id, product_name, today, price, expiration]
             csv_writer.writerow(product)
-    print(
-        f"You have purchased {quantity}x {product_name}, costing {price} eur per piece, they will expire on {expiration}"
-    )
+    print(f"You have purchased {quantity}x {product_name}, costing {price} eur per piece, they will expire on {expiration}")
