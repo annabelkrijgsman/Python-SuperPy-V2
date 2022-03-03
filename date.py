@@ -18,11 +18,11 @@ def set_current_date():
     today = str(datetime.date.today())
     with open(path, "w") as file:
         file.write(today)
-    print(f"The date has changed to: {today}")
+    print(f"The system date has changed to: {today}")
 
 def advance_time(days):
     today = datetime.datetime.strptime(get_date(), "%Y-%m-%d").date()
     new_date = today + datetime.timedelta(days)
     with open(path, "w") as file:
         file.write(str(new_date))
-        print(f"The new date is: {new_date}")
+        print(f"The new system date is: {new_date}")
