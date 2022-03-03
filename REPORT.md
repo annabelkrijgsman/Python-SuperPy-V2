@@ -8,9 +8,9 @@ For a more front-end type of person like myself this was really nice to built in
 
 [Preview table view](https://i.imgur.com/7kjDrP9.png)
 
-## The option to export data to a CSV file
+## The option to export data to a CSV and/or PDF file
 
-In the `show-inventory` command you have the option to only show the inventory in the commandline, as well as the option to export the data to a CSV file. If this file already exists you will get a notification. If the file does not already exists a file called _export_inventory.csv_ will be created and the current inventory will be written to the file.
+In the `show-inventory` command you have the option to only show the inventory in the commandline, as well as the options to export the data to a CSV and/or PDF file. If this file already exists you will get a notification. If the file does not already exists a file called _export_inventory.csv_/_export_inventory.pdf_ will be created and the current inventory will be written to the file.
 
 ## Inventory functions
 
