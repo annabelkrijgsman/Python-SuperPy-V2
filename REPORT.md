@@ -8,20 +8,9 @@ For a more front-end type of person like myself this was really nice to built in
 
 [Preview table view](https://i.imgur.com/7kjDrP9.png)
 
-## Buy and Sell
+## The option to export data to a CSV file
 
-Both the buy and sell functions take multiple arguments of a specific format in order to write data to a csv.
-
-In the code example below you can see how I decided to solve this problem. By wrapping the try except in a while True loop, the program will keep asking for input until a valid input has been given.
-
-```
-while True:
-    try:
-        amount = int(input("Enter the quantity of the purchased product (example input: 4): "))
-        break
-    except:
-        print("Please try again with a whole number (example input: 4): ")
-```
+In the `show-inventory` command you have the option to only show the inventory in the commandline, as well as the option to export the data to a CSV file. If this file already exists you will get a notification. If the file does not already exists a file called _export_inventory.csv_ will be created and the current inventory will be written to the file.
 
 ## Inventory functions
 
