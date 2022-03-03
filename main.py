@@ -51,7 +51,7 @@ date_revenue.add_argument("--seconddate", type= str)
 date_profit.add_argument("--firstdate", type= str)
 date_profit.add_argument("--seconddate", type= str)
 
-inventory.add_argument("--export", type= str)
+inventory.add_argument("-e", "--export", type= str)
 
 # Set defaults
 show_date.set_defaults(func=print_date)

@@ -112,6 +112,7 @@ def export_inventory(export_value):
     if export_value == "Yes":
         if file_exists:
             print(f"This file already exists")
+            display_inventory()
         else:
             with open(path, "w", newline ="") as file:
                 csv_writer = csv.writer(file)
@@ -119,6 +120,7 @@ def export_inventory(export_value):
                     products = [product, quantity]
                     csv_writer.writerow(products)
             print(f"File created")
+            display_inventory()
     else:
         display_inventory()
 
