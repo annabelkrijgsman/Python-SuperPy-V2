@@ -25,6 +25,8 @@ Positional arguments:
 | register-sale      | Register the sale of a product                   |
 | show-total-revenue | Shows the total revenue                          |
 | show-date-revenue  | Shows the total revenue, between two dates       |
+| show-total-profit  | Shows the total profit                           |
+| show-date-profit   | Shows the total profit, between two dates        |
 | show-inventory     | Shows the amount of currently available products |
 | show-sales         | Shows all the sales made                         |
 | show-purchases     | Shows all the purchases made                     |
@@ -45,19 +47,19 @@ Uses datetime to get today's date and writes this date to date.txt
 
 Asks for an integer and advances the system date by this many days by writing the new date to date.txt
 
-`python main.py advance-date`
+`python main.py advance-date --days 3`
 
 - ### `register-purchase`
 
-Starts the buy registration process, asks for a product name, amount (int), the price (float, accepts int), number of days from now the product will expire (int) and writes the bought item(s) to the bought.csv file
+Starts the buy registration process, asks for a product name (str), quantity (int), the price (float, accepts int), number of days from now the product will expire (int) and writes the bought item(s) to the bought.csv file
 
-`python main.py register-purchase`
+`python main.py register-purchase --productname Olives --quantity 5 --price 1.55 --expiration 10`
 
 - ### `register-sale`
 
-Starts the sales registration process, asks for a product name and number of items and checks if these are available, asks for sell price and writes the sold products to sales.csv
+Starts the sales registration process, asks for a product name (str) and number of products sold (int), asks for sell price (float) and writes the sold products to sales.csv
 
-`python main.py register-sale`
+`python main.py register-sale --productname Olives --quantity 2 --price 2.15`
 
 - ### `show-total-revenue`
 
@@ -69,7 +71,19 @@ Reads all the sales prices from sales.csv and shows the total
 
 Same as total revenue, but asks for two dates, earliest first and latest second, in 'YYYY-MM-DD' format and returns the total revnue between the given dates
 
-`python main.py show-date-revenue`
+`python main.py show-date-revenue --firstdate 2022-01-01 --seconddate 2022-03-03`
+
+- ### `show-total-profit`
+
+.........
+
+`python main.py show-total-revenue`
+
+- ### `show-date-profit`
+
+Same as total profit, but asks for two dates, earliest first and latest second, in 'YYYY-MM-DD' format and returns the total profit between the given dates
+
+`python main.py show-date-revenue --firstdate 2022-01-01 --seconddate 2022-03-03`
 
 - ### `show-inventory`
 
