@@ -10,26 +10,27 @@ _Assignment by Winc Academy_
 - [CSV](https://docs.python.org/3/library/csv.html)
 - [Datetime](https://docs.python.org/3/library/datetime.html)
 - [Rich](https://rich.readthedocs.io/en/stable/introduction.html)
+- [PyFPDF](https://pyfpdf.readthedocs.io/en/latest/)
 
 ## Command line options
 
 Positional arguments:
 
-| Commands           | Description of commands                                                                 |
-| ------------------ | --------------------------------------------------------------------------------------- |
-| -h                 | Shows the help message and exits the program                                            |
-| show-date          | Shows the system date                                                                   |
-| set-current-date   | Set the system date to the current date                                                 |
-| advance-date       | Advance the date by a number of days                                                    |
-| register-purchase  | Register the purchase of a product                                                      |
-| register-sale      | Register the sale of a product                                                          |
-| show-total-revenue | Shows the total revenue                                                                 |
-| show-date-revenue  | Shows the total revenue, between two dates                                              |
-| show-total-profit  | Shows the total profit                                                                  |
-| show-date-profit   | Shows the total profit, between two dates                                               |
-| show-inventory     | Shows the amount of currently available products, and gives the option to export to CSV |
-| show-sales         | Shows all the sales made                                                                |
-| show-purchases     | Shows all the purchases made                                                            |
+| Commands           | Description of commands                                                                            |
+| ------------------ | -------------------------------------------------------------------------------------------------- |
+| -h                 | Shows the help message and exits the program                                                       |
+| show-date          | Shows the system date                                                                              |
+| set-current-date   | Set the system date to the current date                                                            |
+| advance-date       | Advance the date by a number of days                                                               |
+| register-purchase  | Register the purchase of a product                                                                 |
+| register-sale      | Register the sale of a product                                                                     |
+| show-total-revenue | Shows the total revenue                                                                            |
+| show-date-revenue  | Shows the total revenue, between two dates                                                         |
+| show-total-profit  | Shows the total profit                                                                             |
+| show-date-profit   | Shows the total profit, between two dates                                                          |
+| show-inventory     | Shows the amount of currently available products, and gives the option to export to CSV and/or PDF |
+| show-sales         | Shows all the sales made                                                                           |
+| show-purchases     | Shows all the purchases made                                                                       |
 
 - ### `show-date`
 
@@ -93,9 +94,13 @@ To see the inventory _without_ an export, use the following command:
 
 `python main.py show-inventory`
 
-To see the inventory _and_ receive an export, use the following command:
+To see the inventory _and_ receive an CSV export, use the following command:
 
-`python main.py show-inventory --export Yes`
+`python main.py show-inventory --exportCSV Yes`
+
+To see the inventory _and_ receive an PDF export, use the following command:
+
+`python main.py show-inventory --exportPDF Yes`
 
 - ### `show-sales`
 
