@@ -53,15 +53,19 @@ date_profit.add_argument("--seconddate", type= str)
 
 inventory.add_argument("-e", "--export", type= str)
 
-# Set defaults
-show_date.set_defaults(func=print_date)
-set_today.set_defaults(func=set_current_date)
-total_revenue.set_defaults(func=print_total_revenue)
-total_profit.set_defaults(func=print_total_profit)
-sales.set_defaults(func=display_sales)
-purchases.set_defaults(func=display_purchases)
-
+# Parse args
 args = parser.parse_args()
+
+# Set defaults
+if args.command == "show-date":
+    show_date.set_defaults(
+        func=print_date()
+    )
+
+if args.command == "set-current-date":
+    show_date.set_defaults(
+        func=set_current_date()
+    )
 
 if args.command == "advance-date":
     advance_date.set_defaults(
@@ -87,12 +91,22 @@ if args.command == "register-sale":
         )
     )
 
+if args.command == "show-total-revenue":
+    total_revenue.set_defaults(
+        func=print_total_revenue()
+    )
+
 if args.command == "show-date-revenue":
     date_revenue.set_defaults(
         func=print_revenue_between_dates(
             args.firstdate,
             args.seconddate
         )
+    )
+
+if args.command == "show-total-profit":
+    total_profit.set_defaults(
+        func=print_total_profit()
     )
 
 if args.command == "show-date-profit":
@@ -108,15 +122,12 @@ if args.command == "show-inventory":
         args.export
     ))
 
-# Got to fix this situation down below... :-)
-if args.command != "advance-date":
-    if args.command != "register-purchase":
-        if args.command != "register-sale":
-            if args.command != "show-date-revenue":
-                if args.command != "show-date-profit":
-                    if args.command != "show-inventory":
-                        def main():
-                            args.func()
-                            
-                        if __name__ == "__main__":
-                            main()
+if args.command == "show-sales":
+    sales.set_defaults(
+        func=display_sales()
+    )
+
+if args.command == "show-purchases":
+    purchases.set_defaults(
+        func=display_purchases()
+    )
