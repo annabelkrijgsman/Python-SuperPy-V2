@@ -15,21 +15,21 @@ _Assignment by Winc Academy_
 
 Positional arguments:
 
-| Commands           | Description of commands                          |
-| ------------------ | ------------------------------------------------ |
-| -h                 | Shows the help message and exits the program     |
-| show-date          | Shows the system date                            |
-| set-current-date   | Set the system date to the current date          |
-| advance-date       | Advance the date by a number of days             |
-| register-purchase  | Register the purchase of a product               |
-| register-sale      | Register the sale of a product                   |
-| show-total-revenue | Shows the total revenue                          |
-| show-date-revenue  | Shows the total revenue, between two dates       |
-| show-total-profit  | Shows the total profit                           |
-| show-date-profit   | Shows the total profit, between two dates        |
-| show-inventory     | Shows the amount of currently available products |
-| show-sales         | Shows all the sales made                         |
-| show-purchases     | Shows all the purchases made                     |
+| Commands           | Description of commands                                                                 |
+| ------------------ | --------------------------------------------------------------------------------------- |
+| -h                 | Shows the help message and exits the program                                            |
+| show-date          | Shows the system date                                                                   |
+| set-current-date   | Set the system date to the current date                                                 |
+| advance-date       | Advance the date by a number of days                                                    |
+| register-purchase  | Register the purchase of a product                                                      |
+| register-sale      | Register the sale of a product                                                          |
+| show-total-revenue | Shows the total revenue                                                                 |
+| show-date-revenue  | Shows the total revenue, between two dates                                              |
+| show-total-profit  | Shows the total profit                                                                  |
+| show-date-profit   | Shows the total profit, between two dates                                               |
+| show-inventory     | Shows the amount of currently available products, and gives the option to export to CSV |
+| show-sales         | Shows all the sales made                                                                |
+| show-purchases     | Shows all the purchases made                                                            |
 
 - ### `show-date`
 
