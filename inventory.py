@@ -4,6 +4,7 @@ from rich import style
 from date import get_date
 from rich.console import Console
 from rich.table import Table
+from fpdf import FPDF
 
 bought_path = "./data/bought.csv"
 sold_path = "./data/sold.csv"
@@ -139,21 +140,57 @@ def display_purchases():
         )
     console.print(table)
 
-def export_inventory(export_value):
+def export_inventory(export_csv, export_pdf):
     inventory = get_inventory()
-    path = "./data/export_inventory.csv"
-    file_exists = os.path.isfile(path)
-    if export_value == "Yes":
-        if file_exists:
+    path_csv = "./data/export_inventory.csv"
+    path_pdf = "./data/export_inventory.pdf"
+    if export_csv == "Yes":
+        if os.path.isfile(path_csv):
             print(f"This file already exists")
-            display_inventory()
         else:
-            with open(path, "w", newline ="") as file:
+            with open(path_csv, "w", newline ="") as file:
                 csv_writer = csv.writer(file)
                 for product, quantity in inventory.items():
                     products = [product, quantity]
                     csv_writer.writerow(products)
-            print(f"File created")
             display_inventory()
+            print(f"CSV file created")
+    elif export_pdf == "Yes":
+        if os.path.isfile(path_pdf):
+            print(f"This file already exists")
+        else:
+            with open(path_csv, newline= "") as file:
+                reader = csv.reader(file)
+                
+                pdf = FPDF()
+                pdf.add_page()
+                page_width = pdf.w - 2 * pdf.l_margin
+                    
+                pdf.set_font('Times','B',14.0) 
+                pdf.cell(page_width, 0.0, 'Inventory', align='C')
+                pdf.ln(10)
+
+                pdf.set_font('Courier', '', 12)
+                
+                col_width = page_width/4
+                
+                pdf.ln(1)
+                
+                th = pdf.font_size
+                
+                for row in reader:
+                    pdf.cell(col_width, th, str(row[0]), border=1)
+                    pdf.cell(col_width, th, row[1], border=1)
+                    pdf.ln(th)
+                    
+                pdf.ln(10)
+
+                pdf.set_font('Times','',10.0) 
+                pdf.cell(page_width, 0.0, '- end of report -', align='C')
+                
+                pdf.output(path_pdf, 'F')
+            display_inventory()
+            print(f"PDF file created")
     else:
         display_inventory()
+

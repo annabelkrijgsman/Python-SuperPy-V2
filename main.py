@@ -29,7 +29,7 @@ total_revenue = subparser.add_parser("show-total-revenue", help="Shows the total
 date_revenue = subparser.add_parser("show-date-revenue", help="Shows the total revenue, between two dates")
 total_profit = subparser.add_parser("show-total-profit", help="Shows the total profit")
 date_profit = subparser.add_parser("show-date-profit", help="Shows the total profit, between two dates")
-inventory = subparser.add_parser("show-inventory", help="Shows the currently available products, and gives the option to export to CSV")
+inventory = subparser.add_parser("show-inventory", help="Shows the currently available products, and gives the option to export as CSV or PDF")
 sales = subparser.add_parser("show-sales", help="Shows all the sales made")
 purchases = subparser.add_parser("show-purchases", help="Shows all the purchases made")
 
@@ -51,7 +51,8 @@ date_revenue.add_argument("--seconddate", type= str)
 date_profit.add_argument("--firstdate", type= str)
 date_profit.add_argument("--seconddate", type= str)
 
-inventory.add_argument("-e", "--export", type= str)
+inventory.add_argument("-c", "--exportCSV", type= str)
+inventory.add_argument("-p", "--exportPDF", type= str)
 
 # Parse args
 args = parser.parse_args()
@@ -119,7 +120,8 @@ if args.command == "show-date-profit":
 
 if args.command == "show-inventory":
     inventory.set_defaults(func=export_inventory(
-        args.export
+        args.exportCSV,
+        args.exportPDF
     ))
 
 if args.command == "show-sales":
