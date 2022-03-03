@@ -74,6 +74,14 @@ def get_sold_between_dates(first_date, second_date):
             items.append(item)
     return items
 
+def get_bought_between_dates(first_date, second_date):
+    bought_items = get_bought_items()
+    items = []
+    for item in bought_items:
+        if item["buy_date"] >= first_date and item["buy_date"] <= second_date:
+            items.append(item)
+    return items
+
 def get_inventory():
     items = get_available_products()
     inventory = {}

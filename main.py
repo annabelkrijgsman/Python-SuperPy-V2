@@ -4,8 +4,8 @@ from date import advance_time, print_date, set_current_date
 from purchases import purchase_product
 from sales import sell_product
 from inventory import display_inventory, display_sales, display_purchases
-from revenue import print_total_revenue
-from profit import print_total_profit
+from revenue import print_total_revenue, print_revenue_between_dates
+from profit import print_total_profit, print_profit_between_dates
 from rich.console import Console
 from rich import print
 
@@ -48,6 +48,9 @@ sale.add_argument("--price", type= float)
 date_revenue.add_argument("--firstdate", type= str)
 date_revenue.add_argument("--seconddate", type= str)
 
+date_profit.add_argument("--firstdate", type= str)
+date_profit.add_argument("--seconddate", type= str)
+
 # Set defaults
 show_date.set_defaults(func=print_date)
 set_today.set_defaults(func=set_current_date)
@@ -85,21 +88,26 @@ if args.command == "register-sale":
 
 if args.command == "show-date-revenue":
     date_revenue.set_defaults(
-        func=revenue.print_revenue_between_dates(
+        func=print_revenue_between_dates(
             args.firstdate,
             args.seconddate
         )
     )
 
-# if args.command == "show-date-profit":
-#     date_profit.set_defaults()                                     # Make functionalities
+if args.command == "show-date-profit":
+    date_profit.set_defaults(
+        func=print_profit_between_dates(
+            args.firstdate,
+            args.seconddate
+        )
+    )
 
 # Got to fix this situation down below... :-)
 if args.command != "advance-date":
     if args.command != "register-purchase":
         if args.command != "register-sale":
             if args.command != "show-date-revenue":
-                # if args.command != "show-date-profit":
+                if args.command != "show-date-profit":
                     def main():
                         args.func()
                         
