@@ -93,6 +93,7 @@ if args.command == "show-date-revenue":
 # if args.command == "show-date-profit":
 #     date_profit.set_defaults()                                     # Make functionalities
 
+# Got to fix this issue down below... :-)
 if args.command != "advance-date":
     if args.command != "register-purchase":
         if args.command != "register-sale":
