@@ -3,7 +3,7 @@ import argparse
 from date import advance_time, print_date, set_current_date
 from purchases import purchase_product
 from sales import sell_product
-from inventory import display_inventory, display_sales, display_purchases
+from inventory import export_inventory, display_sales, display_purchases
 from revenue import print_total_revenue, print_revenue_between_dates
 from profit import print_total_profit, print_profit_between_dates
 from rich.console import Console
@@ -29,7 +29,7 @@ total_revenue = subparser.add_parser("show-total-revenue", help="Shows the total
 date_revenue = subparser.add_parser("show-date-revenue", help="Shows the total revenue, between two dates")
 total_profit = subparser.add_parser("show-total-profit", help="Shows the total profit")
 date_profit = subparser.add_parser("show-date-profit", help="Shows the total profit, between two dates")
-inventory = subparser.add_parser("show-inventory", help="Shows the amount of currently available products")
+inventory = subparser.add_parser("show-inventory", help="Shows the currently available products, and gives the option to export to CSV")
 sales = subparser.add_parser("show-sales", help="Shows all the sales made")
 purchases = subparser.add_parser("show-purchases", help="Shows all the purchases made")
 
@@ -51,12 +51,13 @@ date_revenue.add_argument("--seconddate", type= str)
 date_profit.add_argument("--firstdate", type= str)
 date_profit.add_argument("--seconddate", type= str)
 
+inventory.add_argument("--export", type= str)
+
 # Set defaults
 show_date.set_defaults(func=print_date)
 set_today.set_defaults(func=set_current_date)
 total_revenue.set_defaults(func=print_total_revenue)
 total_profit.set_defaults(func=print_total_profit)
-inventory.set_defaults(func=display_inventory)
 sales.set_defaults(func=display_sales)
 purchases.set_defaults(func=display_purchases)
 
@@ -102,14 +103,20 @@ if args.command == "show-date-profit":
         )
     )
 
+if args.command == "show-inventory":
+    inventory.set_defaults(func=export_inventory(
+        args.export
+    ))
+
 # Got to fix this situation down below... :-)
 if args.command != "advance-date":
     if args.command != "register-purchase":
         if args.command != "register-sale":
             if args.command != "show-date-revenue":
                 if args.command != "show-date-profit":
-                    def main():
-                        args.func()
-                        
-                    if __name__ == "__main__":
-                        main()
+                    if args.command != "show-inventory":
+                        def main():
+                            args.func()
+                            
+                        if __name__ == "__main__":
+                            main()

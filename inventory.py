@@ -1,4 +1,5 @@
 import csv
+import os.path
 from rich import style
 from date import get_date
 from rich.console import Console
@@ -103,6 +104,23 @@ def display_inventory():
             str(value),
         )
     console.print(table)
+
+def export_inventory(export_value):
+    inventory = get_inventory()
+    path = "./data/export.csv"
+    file_exists = os.path.isfile(path)
+    if export_value == "Yes":
+        if file_exists:
+            print(f"This file already exists")
+        else:
+            with open(path, "w", newline ="") as file:
+                csv_writer = csv.writer(file)
+                for product, quantity in inventory.items():
+                    products = [product, quantity]
+                    csv_writer.writerow(products)
+            print(f"File created")
+    else:
+        display_inventory()
 
 
 def display_sales():
